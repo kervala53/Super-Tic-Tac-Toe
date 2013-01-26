@@ -6,17 +6,17 @@ if(isset($_POST["button"])){
 		die("Could not connect: ". mysql_error());
 	}
 	
-	if (!mysql_select_db('test', $conection)) {
+	if (!mysql_select_db('tic-tac-toe', $conection)) {
 	    die ("Can not use test base : " . mysql_error());
 	}
 
-	$arr = mysql_query("select * from costumers where username = '".$_POST["username"]."';", $conection);
+	$result = mysql_query("select * from users where username = '".$_POST["username"]."';", $conection);
 
-	if (!$arr) {
+	if (!$result) {
 			die(mysql_error());
 		}
 
-	if (mysql_num_rows($arr)>0) {
+	if (mysql_num_rows($result)>0) {
 	echo "
 		There exists such username . Please , register with another one !
 	";
@@ -26,14 +26,14 @@ if(isset($_POST["button"])){
 		$password = $_POST["password"];
 		$firstname = $_POST["firstName"];
 		$lastname = $_POST["lastName"];
-		$address = $_POST["address"];
-		$query = mysql_query("INSERT INTO costumers VALUES('1','$username','$password', '$firstname', '$lastname', '$address')");
+		$email = $_POST["e-mail"];
+		$query = mysql_query("INSERT INTO user VALUES('','$username','$firstname', '$lastname', '$password', '0','0','$email')");
 		if (!$query) {
 			die("Could not insert: " . mysql_error());
 		}
 		echo "You Have Registered Successfully ! ! !
 			<br>
-			Go To This Link And Login With Your New Username And Password  <a href=\"web-store.php\"> Click Here ! </a> 
+			Go To This Link And Login With Your New Username And Password  <a href=\"login.php\"> Click Here ! </a> 
 		";
 	}
 	
@@ -47,7 +47,7 @@ if(isset($_POST["button"])){
 			</head>
 			<body >
 				<h1> Register </h1> 
-				<form action = \"register.php\" method = \"post\">
+				<form action = \"registratin.php\" method = \"post\">
 					username :
 					<input type=\"text\"  name=\"username\"/>
 					<br>
@@ -60,8 +60,8 @@ if(isset($_POST["button"])){
 					last name :
 					<input type=\"text\"  name=\"lastName\"/>
 					<br>
-					address : 
-					<input type=\"text\"  name=\"address\"/>
+					e-mail : 
+					<input type=\"text\"  name=\"e-mail\"/>
 					<br>
 					<input type=\"submit\" value=\"register\"/ name=\"button\">
 				</form>

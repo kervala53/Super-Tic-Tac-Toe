@@ -1,1 +1,1 @@
-Create table user (user_id int AUTO_INCREMENT,username varchar(60),name varchar(60),surname varchar(60),password varchar(60),played_won int,won_game int,email varchar(80),primary key(user_id ));
+Create table user (user_id int AUTO_INCREMENT,username varchar(60),name varchar(60),surname varchar(60),password varchar(60),played_game int,won_game int,email varchar(80),primary key(user_id ));

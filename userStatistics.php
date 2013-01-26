@@ -1,7 +1,14 @@
 <?php
-	// session_start();
-	// $user_id = $_SESSION['user_id'];
-	$user_id = 1;
+	
+	if(isset($_SESSION["user_id"])){ 
+		$user_id = $_SESSION['user_id'];
+	}
+	
+	else{
+		header("Location:index.php");
+	}
+	
+
 	$conection = mysql_connect('localhost', 'root', '');
 	if (!$conection) {
 		die("Could not connect: ". mysql_error());

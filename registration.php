@@ -10,7 +10,7 @@ if(isset($_POST["button"])){
 	    die ("Can not use test base : " . mysql_error());
 	}
 
-	$result = mysql_query("select * from users where username = '".$_POST["username"]."';", $conection);
+	$result = mysql_query("select * from user where username = '".$_POST["username"]."';", $conection);
 
 	if (!$result) {
 			die(mysql_error());
@@ -33,8 +33,9 @@ if(isset($_POST["button"])){
 		}
 		echo "You Have Registered Successfully ! ! !
 			<br>
-			Go To This Link And Login With Your New Username And Password  <a href=\"login.php\"> Click Here ! </a> 
-		";
+			Go To This Link And Login With Your New Username And Password ! <br>";
+			echo "You will be redirected to login page in 5 seconds";
+		header("refresh:5; url=index.php");
 	}
 	
 }
@@ -47,7 +48,7 @@ if(isset($_POST["button"])){
 			</head>
 			<body >
 				<h1> Register </h1> 
-				<form action = \"registratin.php\" method = \"post\">
+				<form action = \"registration.php\" method = \"post\">
 					username :
 					<input type=\"text\"  name=\"username\"/>
 					<br>

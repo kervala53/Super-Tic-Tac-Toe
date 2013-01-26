@@ -11,7 +11,7 @@
 	    die ("Can not use tic-tac-toe base : " . mysql_error());
 	}
 
-	$result = mysql_query("select * from user where username = '".$user_id."';", $conection);
+	$result = mysql_query("select * from user where user_id = '".$user_id."';", $conection);
 
 	if (!$result) {
 			die(mysql_error());
@@ -20,7 +20,7 @@
 	$username = $row["username"];
 	$played_game = $row["played_game"];
 	$won_game = $row["won_game"];
-	$winning_percentage = $won_game/$played_game;
+	//$winning_percentage = $won_game/$played_game;
 	
 	echo "<!DOCTYPE html>
 		<html>
@@ -34,7 +34,7 @@
 				<br />
 				<h3>You have won ".$won_game." .</h3>
 				<br />
-				<h3>Your winning percentage ".$winning_percentage*100 ."  .</h3>
+				<h3>Your winning percentage </h3>
 				<a href=\"mainPage.php\"> Back </a>
 				<br />
 				<a href= \"logout.php\"> Logout </a>

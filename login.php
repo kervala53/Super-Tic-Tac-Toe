@@ -23,9 +23,11 @@
 
 	if (!$arr) {
 			die(mysql_error());
-		}
+	}
 
 	if (mysql_num_rows($arr)>0) {
+		$row = mysql_fetch_array($arr);
+		$_SESSION['user_id'] = $row['user_id'];
 		$_SESSION['username'] = $username; 
 		header("Location:mainPage.php");
 	}

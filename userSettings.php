@@ -26,9 +26,42 @@
 	$old_password = $row["password"];
 	$old_email = $row["email"];
 	if(isset($_POST['email'])){
-		echo"aq var";
+		if(isset($_POST["emailFill"])){
+			echo "string";
+		}
+		else{
+			echo"
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<title>".$username ." settings</title>
+			</head>
+			<body >
+				<h1> Change email ! </h1> 
+				<br />
+				<form action='userSettings.php' method='post'>
+					Enter new e-mail : <input type=\"text\"  name=\"emailFill\"/>
+					<input type='submit' name='email' value='Change email' />
+				</form>
+			</body>
+		";
+		}
 	}elseif(isset($_POST['password'])){
-		echo "chamshale";
+		echo "<!DOCTYPE html>
+		<html>
+			<head>
+				<title>".$username ." settings</title>
+			</head>
+			<body>
+				<h1> Change password ! </h1> 
+				<br />
+				<form action='userSettings.php' method='post'>
+					Enter new password here : <input type=\"text\"  name=\"enterPassword\"/>
+					<input type='submit' name='password' value='Change password' />
+				</form>
+			</body>
+			"
+			;
 		 
 	}else {
 		echo "<!DOCTYPE html>

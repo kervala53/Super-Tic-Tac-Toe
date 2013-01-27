@@ -14,8 +14,8 @@
 		die("Could not connect: ". mysql_error());
 	}
 	
-	if (!mysql_select_db('tic-tac-toe', $conection)) {
-	    die ("Can not use tic-tac-toe base : " . mysql_error());
+	if (!mysql_select_db('tictactoe', $conection)) {
+	    die ("Can not use tictactoe base : " . mysql_error());
 	}
 
 	$result = mysql_query("select * from user where user_id = '".$user_id."';", $conection);

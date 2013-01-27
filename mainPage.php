@@ -54,7 +54,7 @@
 						".$won_game."
 					</td>
 					<td>
-						<form action='play.php' method='post'>
+						<form action='sitCreate.php' method='post'>
 							<input type=\"submit\"  name=\"game\" value = \" Join game \"/>
 							<input type='hidden' name='hidden' value='".$game_id."'/>
 						</form>
@@ -65,7 +65,7 @@
 	echo "<a href= \"userSettings.php\"> User settings </a>";
 	
 	echo "
-			<form action='play.php' method='post'>
+			<form action='sitCreate.php' method='post'>
 				<input type=\"submit\"  name=\"newgame\" value = \" Create New Game\"/>
 			</form>"
 	;

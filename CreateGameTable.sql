@@ -1,0 +1,1 @@
+Create table game (game_id int AUTO_INCREMENT,board varchar(81),player1_id int,player2_id int,turn int,isStarted int,isFinished int,whoWon int,primary key(game_id ));

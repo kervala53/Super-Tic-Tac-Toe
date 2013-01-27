@@ -6,7 +6,7 @@
 	}
 	
 	
-	$conection = mysql_connect('localhost', 'root', 'zazry');
+	$conection = mysql_connect('localhost', 'root', '');
 	if (!$conection) {
 		die("Could not connect: ". mysql_error());
 	}

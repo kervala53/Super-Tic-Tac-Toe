@@ -15,6 +15,14 @@ if(isset($_POST["newgame"])){ // tamashs qmnis
 		die("Could not insert: " . mysql_error());
 	}
 	else{
+		$querry = mysql_query("select * from game where player1_id = ".$user_id." and player2_id = 0;");
+		if (!$querry) {
+			die(mysql_error());
+		}
+		if (mysql_num_rows($querry)>0) {
+			$row = mysql_fetch_array($querry);
+			$_SESSION['game_id'] = $row['game_id'];
+		}
 		header("Location:play.php");
 	}
 }
@@ -43,12 +51,10 @@ if(isset($_POST["game"])){ // jdeba sxvastan satamashod
 	}
 	if($querry>0){
 		header("Location:play.php");
-	//	header("refresh:5; url=mainPage.php");
 	}
 	else{
 		echo "Some one has sat on this table ! ";
-		
-	}
+		header("refresh:5; url=mainPage.php");			}
 		
 }
 

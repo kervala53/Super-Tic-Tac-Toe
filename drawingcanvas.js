@@ -137,8 +137,8 @@ function paintBigO(x, y) {
 
 function clickHandler(e) {
 
-	var y = Math.floor(e.clientY / (height / size));
-	var x = Math.floor(e.clientX / (width / size));
+	var y = Math.floor((e.clientY) / (height / size));
+	var x = Math.floor((e.clientX-10) / (width / size));
 
 	paintX(x,y);
 

@@ -3,7 +3,7 @@
 	if(isset($_SESSION["user_id"])){ 
 		$user_id = $_SESSION['user_id'];
 	}
-	
+	//redirect to play.php if created game or already playing
 	else{
 		header("Location:index.php");
 	}

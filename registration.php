@@ -13,7 +13,7 @@ if(isset($_POST["button"])){
 		die("Could not connect: ". mysql_error());
 	}
 	
-	if (!mysql_select_db('tic-tac-toe', $conection)) {
+	if (!mysql_select_db('tictactoe', $conection)) {
 	    die ("Can not use test base : " . mysql_error());
 	}
 
@@ -38,10 +38,8 @@ if(isset($_POST["button"])){
 		if (!$query) {
 			die("Could not insert: " . mysql_error());
 		}
-		echo "You Have Registered Successfully ! ! !
-			<br>
-			Go To This Link And Login With Your New Username And Password ! <br>";
-			echo "You will be redirected to login page in 5 seconds";
+		echo "You Have Registered Successfully ! ! ! <br>";
+		echo "You will be redirected to login page in 5 seconds";
 		header("refresh:5; url=index.php");
 	}
 	

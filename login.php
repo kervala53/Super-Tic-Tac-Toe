@@ -6,12 +6,12 @@
 	}
 	
 	
-	$conection = mysql_connect('localhost', 'root', '');
+	$conection = mysql_connect('localhost', 'root', 'zazry');
 	if (!$conection) {
 		die("Could not connect: ". mysql_error());
 	}
 	
-	if (!mysql_select_db('tic-tac-toe', $conection)) {
+	if (!mysql_select_db('tictactoe', $conection)) {
 	    die ("Can not use test base : " . mysql_error());
 	}
 	

@@ -43,7 +43,7 @@
 						timeout : 10000,
 						complete : function(result) {
 							if (result.responseText.charAt(0) == x) {
-								paintO(result.charAt(1), result.charAt(2));
+								paintO(result.responseText.charAt(1), result.responseText.charAt(2));
 							}
 						}
 					});

@@ -1,6 +1,7 @@
 <?php
 $patara = "000100000";
 $didi = "000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+$temp;
 // for($i=0;$i<3;$i++){
 	// for($i=0;$i<9;$i++){
 		// if($patara{$i}==1 || $patara{$i}==2){
@@ -10,7 +11,16 @@ $didi = "00000000000000000000000000000000000000000000000000000000000000000000000
 	// }
 // }for($i=0;$i<9;$i++){
 	if($patara{$i}==0){
-		
+		$temp = $temp.$didi{$i*3};
+		$temp = $temp.$didi{$i*3+1};
+		$temp = $temp.$didi{$i*3+2};
+		$temp = $temp.$didi{$i*3+9};
+		$temp = $temp.$didi{$i*3+10};
+		$temp = $temp.$didi{$i*3+11};
+		$temp = $temp.$didi{$i*3+18};
+		$temp = $temp.$didi{$i*3+19};
+		$temp = $temp.$didi{$i*3+20};
+		//gamodzaxeba shemocmeba mag dapis mere
 	}
 }
 

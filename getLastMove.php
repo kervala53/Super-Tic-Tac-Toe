@@ -11,13 +11,15 @@ if (isset($_SESSION["game_id"])) {
 	if (!mysql_select_db('tictactoe', $conection)) {
 		die("Can not use test base : " . mysql_error());
 	}
+	
 	$arr = mysql_query("select * from game where game_id = ".$_SESSION["game_id"]." and turn = ".$_SESSION["user_id"].";", $conection);
 	if (!$arr) {
 		die(mysql_error());
 	}
+	
 	if (mysql_num_rows($arr) > 0) {
 		$row = mysql_fetch_array($arr);
-		echo $row['last_move'];
+		echo $row["last_turn"];
 	} else {
 		echo 0;
 	}

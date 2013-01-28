@@ -33,7 +33,7 @@
 				var myTurn = false;
 
 				paintBoard('');
-
+				
 				function getLastMove() {
 					$.ajax({
 						url : "getLastMove.php",
@@ -57,6 +57,7 @@
 						cache : false,
 						timeout : 10000,
 						complete : function(result) {
+							console.log(result);
 							if (result.responseText == true) {
 								console.log("chemi jeria");
 								myTurn = true;
@@ -68,9 +69,8 @@
 						}
 					});
 				};
-
+				isMyTurn();
 				function clickHandler(e, player) {
-
 					var tempY = Math.floor((e.clientY - 10) / (height / size));
 					var tempX = Math.floor((e.clientX - 10) / (width / size));
 
@@ -86,10 +86,11 @@
 						cache : false,
 						timeout : 10000,
 						complete : function(result) {
-							console.log(result.responseText);
+							console.log(result);
 							return result.responseText;
 						}
 					})).then(function(isLegal, a, b) {
+						console.log(isLegal);
 						if (isLegal != 0) {
 							if (player == x) {
 								paintX(tempX, tempY);

@@ -24,12 +24,14 @@ function checkBoard($patara) {
 				if ($patara{$i * 3 + $j} == $o) {
 					if ($patara{$i * 3 + $j + 1} == $o && $patara{$i * 3 + $j + 2} == $o) {
 						$won = true;
-						$whowon = $o;//win o
+						$whowon = $o;
+						//win o
 					}
 				} else {
 					if ($patara{$i * 3 + $j + 1} == $x && $patara{$i * 3 + $j + 2} == $x) {
 						$won = true;
-						$whowon = $x;//win x
+						$whowon = $x;
+						//win x
 					}
 				}
 				if ($i == 0) {
@@ -95,19 +97,27 @@ if (mysql_num_rows($querry) > 0) {
 			$temp = $temp . $board{$i * 3 + 18};
 			$temp = $temp . $board{$i * 3 + 19};
 			$temp = $temp . $board{$i * 3 + 20};
-			$newMiniBoard = $newMiniBoard.checkBoard($temp);
+			$newMiniBoard = $newMiniBoard . checkBoard($temp);
 		}
 	}
-	if($newMiniBoard != $mini_board){
-		//bazashi update
+	if ($newMiniBoard != $mini_board) {
+		$querry = mysql_query("update game set mini_board=" . $newMiniBoard . " game_id =" . $game_id . "");
+		if (!$querry) {
+			die("Could not update querry: " . mysql_error());
+		}
+		if ($querry > 0) {
+			//carmatebit sheicvala
+		} else {
+			echo "could not update ";
+			// sadac ginda gadaikvane 
+		}
 		$winningPlayer = checkBoard($newMiniBoard);
-		
-	}
-	else {
+	} else {
 		echo 0;
 	}
-	
+
 } else {
-	echo 0;//error
+	echo 0;
+	//error
 }
 ?>

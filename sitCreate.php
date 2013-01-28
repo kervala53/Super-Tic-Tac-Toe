@@ -50,8 +50,8 @@ if(isset($_POST["game"])){ // jdeba sxvastan satamashod
 		die("Could not update querry: " . mysql_error());
 	}
 	if($querry>0){
-		header("Location:play.php");
 		$_SESSION["game_id"];
+		header("Location:joinedplayer.php");
 	}
 	else{
 		echo "Some one has sat on this table ! ";

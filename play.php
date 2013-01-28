@@ -83,6 +83,7 @@
 						cache : false,
 						timeout : 10000,
 						complete : function(result) {
+							console.log(result.responseText);
 							if (result.responseText == true) {
 								console.log("chemi jeria");
 								myTurn = true;
@@ -112,10 +113,10 @@
 						cache : false,
 						timeout : 10000,
 						complete : function(result) {
-							console.log(result.responseText);
 							return result.responseText;
 						}
 					})).then(function(isLegal, a, b) {
+						console.log(isLegal);
 						if (isLegal != 0) {
 							if (player == x) {
 								paintX(tempX, tempY);

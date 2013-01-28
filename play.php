@@ -73,11 +73,10 @@
 									cache : false,
 									timeout : 10000,
 									complete : function(result) {
-										console.log(result);
-										if (result.responseText == x) {
+										if (result.responseText == 1) {
 											window.alert("You Won");
 										}
-										if (result.responseText == o) {
+										if (result.responseText == 2) {
 											window.alert("You Lose");
 										}
 									}

@@ -52,10 +52,10 @@
 										cache : false,
 										timeout : 10000,
 										complete : function(result) {
-											if (result.responseText == x) {
+											if (result.responseText == 1) {
 												window.alert("You Lose");
 											}
-											if (result.responseText == o) {
+											if (result.responseText == 2) {
 												window.alert("You Won");
 											}
 										}

@@ -33,6 +33,7 @@ if (isset($_SESSION["game_id"])) {
 		}
 		if ($querry > 0) {
 			echo 1;
+			
 		} 
 	} 
 	else {

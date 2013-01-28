@@ -89,7 +89,6 @@ function checkBoard($patara) {
 	}
 	return $whowon;
 }
-
 if (mysql_num_rows($querry) > 0) {
 	$row = mysql_fetch_array($querry);
 	$board = $row["board"];
@@ -97,32 +96,46 @@ if (mysql_num_rows($querry) > 0) {
 	$newMiniBoard = "";
 	for ($i = 0; $i < 9; $i++) {
 		if ($mini_board[$i] == 0) {
-			$temp = $temp . $board[$i * 3];
-			$temp = $temp . $board[$i * 3 + 1];
-			$temp = $temp . $board[$i * 3 + 2];
-			$temp = $temp . $board[$i * 3 + 9];
-			$temp = $temp . $board[$i * 3 + 10];
-			$temp = $temp . $board[$i * 3 + 11];
-			$temp = $temp . $board[$i * 3 + 18];
-			$temp = $temp . $board[$i * 3 + 19];
-			$temp = $temp . $board[$i * 3 + 20];
+			if($i>=0 && $i<3){
+				$l = 0;
+			}
+			if($i>2 && $i<6){
+				$l = 6;
+			}
+			if($i>5 && $i<9){
+				$l=12;
+			}
+			$temp = $temp . $board[($i+$l) * 3];
+			$temp = $temp . $board[($i+$l) * 3 + 1];
+			$temp = $temp . $board[($i+$l) * 3 + 2];
+			$temp = $temp . $board[($i+$l) * 3 + 9];
+			$temp = $temp . $board[($i+$l)* 3 + 10];
+			$temp = $temp . $board[($i+$l)* 3 + 11];
+			$temp = $temp . $board[($i+$l)* 3 + 18];
+			$temp = $temp . $board[($i+$l)* 3 + 19];
+			$temp = $temp . $board[($i+$l)* 3 + 20];
 			$newMiniBoard = $newMiniBoard . checkBoard($temp);
 			$temp = NULL;
+			$l =null;
+		}
+		else{
+			$newMiniBoard = $newMiniBoard.$mini_board[$i];
 		}
 	}
 
 	if ($newMiniBoard != $mini_board) {
+		$winningPlayer =0;
 		$querry = mysql_query("update game set mini_board=" . $newMiniBoard . " where game_id =" . $game_id . "");
 		if (!$querry) {
 			die("Could not update querry: " . mysql_error());
 		}
 		if ($querry > 0) {
-			//carmatebit sheicvala
+			$winningPlayer = checkBoard($newMiniBoard);
+			echo $winningPlayer;
 		} else {
 			echo "could not update ";
-			// sadac ginda gadaikvane 
 		}
-		$winningPlayer = checkBoard($newMiniBoard);
+		
 	} else {
 		echo 0;
 	}

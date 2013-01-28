@@ -18,7 +18,7 @@ if (isset($_SESSION["game_id"])) {
 	if (mysql_num_rows($arr) > 0) {
 		echo 1;
 	} else {
-		echo 0;
+		echo "0";
 	}
 }
 ?>

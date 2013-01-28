@@ -1,6 +1,6 @@
 <?php
 $patara = "000100000";
-// $didi = "000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+$didi = "000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 // for($i=0;$i<3;$i++){
 	// for($i=0;$i<9;$i++){
 		// if($patara{$i}==1 || $patara{$i}==2){
@@ -8,7 +8,12 @@ $patara = "000100000";
 		// }
 		// $didi{$j*$i};
 	// }
-// }
+// }for($i=0;$i<9;$i++){
+	if($patara{$i}==0){
+		
+	}
+}
+
 $won = false;
 $whowon =5;
 for($i=0;$i<3;$i++){
@@ -25,7 +30,21 @@ for($i=0;$i<3;$i++){
 					$won = true;
 					$whowon =1;
 				}
-			}		
+			}	
+			if($i==0){
+				if($patara{0}==0){
+					if($patara{4}==0 && $patara{8}==0){
+						$won = true;
+						$whowon =0;
+					}
+				}
+				else{
+					if($patara{4}==1 && $patara{8}==1){
+						$won = true;
+						$whowon =1;
+					}
+				}
+			}	
 		}
 		if($i==0){
 			if($patara{$j}==0){
@@ -38,6 +57,22 @@ for($i=0;$i<3;$i++){
 				if($patara{$j+3}==1 && $patara{$j+6}==1){
 					$won = true;
 					$whowon =1;
+				}
+			}
+			if($j==2){
+				if($patara{2}==0){
+					if($patara{4}==0 && $patara{6}==0){
+						$won = true;
+						$whowon =0;
+					}
+					
+				}
+				else{
+					if($patara{4}==1 && $patara{6}==1){
+						$won = true;
+						$whowon =1;
+					}
+					
 				}
 			}
 		}	

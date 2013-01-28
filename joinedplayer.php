@@ -42,9 +42,26 @@
 						cache : false,
 						timeout : 10000,
 						complete : function(result) {
-							console.log(result);
 							if (result.responseText.charAt(0) == x) {
 								paintX(parseInt(result.responseText.charAt(1)), parseInt(result.responseText.charAt(2)));
+								function getLastMove() {
+									$.ajax({
+										url : "getwhowon.php",
+										type : 'POST',
+										async : false,
+										cache : false,
+										timeout : 10000,
+										complete : function(result) {
+											if (result.responseText == x) {
+												window.alert("You Lose");
+											}
+											if (result.responseText == o) {
+												window.alert("You Won");
+											}
+										}
+									});
+								}
+
 							}
 						}
 					});
@@ -95,13 +112,28 @@
 								url : "makeMove.php",
 								type : 'POST',
 								data : {
-									'move' : player + "" +tempX +""+ tempY,
+									'move' : player + "" + tempX + "" + tempY,
 								},
 								async : false,
 								cache : false,
 								timeout : 10000,
 								complete : function(result) {
 									return result.responseText;
+								}
+							});
+							$.ajax({
+								url : "getwhowon.php",
+								type : 'POST',
+								async : false,
+								cache : false,
+								timeout : 10000,
+								complete : function(result) {
+									if (result.responseText == x) {
+										window.alert("You Lose");
+									}
+									if (result.responseText == o) {
+										window.alert("You Won");
+									}
 								}
 							});
 							myTurn = false;

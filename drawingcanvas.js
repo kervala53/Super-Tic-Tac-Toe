@@ -17,9 +17,9 @@ function paintBoard(boardString) {
 	context.beginPath();
 	context.strokeStyle = '#000';
 	context.lineWidth = 4;
-	
-	context.clearRect (0, 0, width , height);
-	
+
+	context.clearRect(0, 0, width, height);
+
 	var size = 9;
 	for (var i = 0; i <= size; i++) {
 		context.moveTo((width / size) * i, 0);
@@ -34,18 +34,16 @@ function paintBoard(boardString) {
 
 	for (var i = 0; i < boardString.length; i++) {
 		var tempX = i % 9;
-		var tempY = Math.floor(i/9);
-		if(boardString.charAt(i) == x){
-			paintX(tempX,tempY);	
-		}
-		else{
-			if(boardString.charAt(i) == o){
-				paintO(tempX,tempY);
+		var tempY = Math.floor(i / 9);
+		if (boardString.charAt(i) == x) {
+			paintX(tempX, tempY);
+		} else {
+			if (boardString.charAt(i) == o) {
+				paintO(tempX, tempY);
 			}
 		}
-		
+
 	}
-	
 
 	// if (begin) {
 	// var ini = Math.abs(Math.floor(Math.random() * 9 - 0.1));
@@ -56,8 +54,8 @@ function paintBoard(boardString) {
 	// }
 }
 
-function clearCanvas(){
-	 context.clearRect (0, 0, width , height);
+function clearCanvas() {
+	context.clearRect(0, 0, width, height);
 }
 
 function paintX(x, y) {
@@ -154,15 +152,6 @@ function paintBigO(x, y) {
 
 	context.stroke();
 	context.closePath();
-}
-
-function clickHandler(e) {
-
-	var y = Math.floor((e.clientY) / (height / size));
-	var x = Math.floor((e.clientX - 10) / (width / size));
-
-	paintX(x, y);
-
 }
 
 

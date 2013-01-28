@@ -59,7 +59,6 @@ function clearCanvas() {
 }
 
 function paintX(x, y) {
-
 	context.beginPath();
 
 	context.strokeStyle = '#ff0000';
@@ -85,7 +84,6 @@ function paintX(x, y) {
 }
 
 function paintO(x, y) {
-
 	context.beginPath();
 
 	context.strokeStyle = '#0000ff';

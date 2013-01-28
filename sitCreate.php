@@ -51,6 +51,7 @@ if(isset($_POST["game"])){ // jdeba sxvastan satamashod
 	}
 	if($querry>0){
 		header("Location:play.php");
+		$_SESSION["game_id"];
 	}
 	else{
 		echo "Some one has sat on this table ! ";

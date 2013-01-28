@@ -10,7 +10,7 @@ if(isset($_POST["newgame"])){ // tamashs qmnis
 	}
 	$user_id =  $_SESSION["user_id"];
 	$board = "000000000000000000000000000000000000000000000000000000000000000000000000000000000";
-	$querry = mysql_query("Insert into game values('','".$board."','".$user_id."','','0','0','0','0');");
+	$querry = mysql_query("Insert into game values('','".$board."','000000000',".$user_id."','','0','0','0','0','000');");
 	if (!$querry) {
 		die("Could not insert: " . mysql_error());
 	}

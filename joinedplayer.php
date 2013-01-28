@@ -43,7 +43,7 @@
 						timeout : 10000,
 						complete : function(result) {
 							if (result.responseText.charAt(0) == x) {
-								paintO(result.responseText.charAt(1), result.responseText.charAt(2));
+								paintX(parseInt(result.responseText.charAt(1)), parseInt(result.responseText.charAt(2)));
 							}
 						}
 					});
@@ -57,7 +57,6 @@
 						cache : false,
 						timeout : 10000,
 						complete : function(result) {
-							console.log(result);
 							if (result.responseText == true) {
 								console.log("chemi jeria");
 								myTurn = true;
@@ -86,11 +85,9 @@
 						cache : false,
 						timeout : 10000,
 						complete : function(result) {
-							console.log(result);
 							return result.responseText;
 						}
 					})).then(function(isLegal, a, b) {
-						console.log(isLegal);
 						if (isLegal != 0) {
 							if (player == x) {
 								paintX(tempX, tempY);

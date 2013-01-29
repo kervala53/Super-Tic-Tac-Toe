@@ -8,14 +8,14 @@
 	if (!mysql_select_db('tictactoe', $conection)) {
 		die("Can not use test base : " . mysql_error());
 	}
-	$arr = mysql_query("select * from game where game_id = " . $_SESSION["game_id"] . " and turn = " . $_SESSION["user_id"] . ";", $conection);
+	$arr = mysql_query("select * from user where username = " . $_POST["username"] .";", $conection);
 	if (!$arr) {
 		die(mysql_error());
 	}
 	$userEmail = NULL;
 	if (mysql_num_rows($arr) > 0) {
 		$row = mysql_fetch_array($arr);
-		$userEmail = $row["user_id"];
+		$userEmail = $row["email"];
 	}
  
  

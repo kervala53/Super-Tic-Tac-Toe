@@ -15,28 +15,35 @@ if (isset($_SESSION["game_id"])) {
 	if (!$arr) {
 		die(mysql_error());
 	}
-	
+
 	if (mysql_num_rows($arr) > 0) {
 		$row = mysql_fetch_array($arr);
 		$player1_id = $row["player1_id"];
 		$player2_id = $row["player2_id"];
+		$mini_board = $row['mini_board'];
+		$x = $_POST['x'];
+		$y = $_POST['y'];
+		$board = $row['board'];
+		$index = $y * 9 + $x;
 		$playerid = NULL;
-		if($_SESSION["user_id"] == $player1_id){
-			$playerid = $player2_id;
-		}
-		else {
-			$playerid = $player1_id;
-		}
-		$querry = mysql_query("update game set turn = ".$playerid." where game_id = ".$_SESSION["game_id"]."");
-		if (!$querry) {
-			die("Could not update querry: " . mysql_error());
-		}
-		if ($querry > 0) {
+		if ($board[$index] != 0) {
+			echo 0;
+		} else {
+			if ($_SESSION["user_id"] == $player1_id) {
+				$playerid = $player2_id;
+			} else {
+				$playerid = $player1_id;
+			}
+			$querry = mysql_query("update game set turn = " . $playerid . " where game_id = " . $_SESSION["game_id"] . "");
+			if (!$querry) {
+				die("Could not update querry: " . mysql_error());
+			}
+			if ($querry > 0) {
+			}
 			echo 1;
-			
-		} 
-	} 
-	else {
+		}
+
+	} else {
 		echo 0;
 	}
 

@@ -48,6 +48,8 @@
 		echo "</form>";
 		echo "<form id='registration' action='registration.php' method='post' accept-charset='UTF-8'>";
 		echo "<input type='submit' name='login' value='Register' />";
+		echo "<a href=\"forgot.html\">forgot password</a>
+";
 		echo "</form>";
 	}
 ?>		

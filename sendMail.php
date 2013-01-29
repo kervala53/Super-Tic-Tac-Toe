@@ -26,7 +26,7 @@
  
  $host = "smtp.gmail.com";
  $username = "gkerv10@freeuni.edu.ge";
- $password = "aq sheni paroli chawere";
+ $password = "ninikervala";
  
  $headers = array ('From' => $from,
    'To' => $to,

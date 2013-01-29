@@ -20,6 +20,7 @@
 	</head>
 	<body>
 		<canvas height="500" width="500" id="board"></canvas>
+		<div id = "whosturn">Waiting for another player to join </div>
 
 		<?php
 		session_start();
@@ -30,6 +31,10 @@
 
 		<script>
 			$(document).ready(function() {
+				function changeLabel(newString){
+					$('#whosturn').html(newString);
+				}
+
 				var isStarted = false;
 				var myTurn = false;
 
@@ -45,6 +50,7 @@
 								console.log("shemogviertda");
 								isStarted = true;
 								myTurn = true;
+								changeLabel("Your Turn");
 							} else {
 								console.log("ar shemogviertda");
 								setTimeout(isGameStarted, 1000);
@@ -100,10 +106,12 @@
 						complete : function(result) {
 							if (result.responseText == true) {
 								console.log("chemi jeria");
+								changeLabel("Your Turn");
 								myTurn = true;
 								getLastMove();
 							} else {
 								console.log("araa chemi jeri");
+								changeLabel("Wait another Player To make move");
 								setTimeout(isMyTurn, 3000);
 							}
 						}

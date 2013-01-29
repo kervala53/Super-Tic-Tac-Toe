@@ -20,7 +20,7 @@
 	</head>
 	<body>
 		<canvas height="500" width="500" id="board"></canvas>
-
+<div id = "whosturn">Wait for another player to make move </div>
 		<?php
 		session_start();
 		if (!isset($_SESSION["user_id"])) {
@@ -30,6 +30,9 @@
 
 		<script>
 			$(document).ready(function() {
+function changeLabel(newString){
+					$('#whosturn').html(newString);
+				}
 				var myTurn = false;
 
 				paintBoard('');
@@ -79,8 +82,10 @@
 								console.log("chemi jeria");
 								myTurn = true;
 								getLastMove();
+								changeLabel("Your Turn");
 							} else {
 								console.log("araa chemi jeri");
+								changeLabel("Wait for another player to make move");
 								setTimeout(isMyTurn, 3000);
 							}
 						}

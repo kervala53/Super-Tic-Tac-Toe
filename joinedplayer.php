@@ -20,7 +20,7 @@
 	</head>
 	<body>
 		<canvas height="500" width="500" id="board"></canvas>
-<div id = "whosturn">Wait for another player to make move </div>
+		<div id = "whosturn">Wait for another player to make move </div>
 		<?php
 		session_start();
 		if (!isset($_SESSION["user_id"])) {

@@ -30,20 +30,20 @@ function checkBoard($patara) {
 	for ($i = 0; $i < 3; $i++) {
 		for ($j = 0; $j < 3; $j++) {
 			if ($j == 0) {
-				if ($patara[$i * 3 + $j] == $o) {
-					if ($patara[$i * 3 + $j + 1] == $o && $patara[$i * 3 + $j + 2] == $o) {
+				if ($patara[$i * 3 ] == $o) { // horizontal line 
+					if ($patara[$i * 3 + 1] == $o && $patara[$i * 3 + 2] == $o) {
 						$won = true;
 						$whowon = $o;
 						//win o
 					}
 				} else {
-					if ($patara[$i * 3 + $j + 1] == $x && $patara[$i * 3 + $j + 2] == $x) {
+					if ($patara[$i * 3 + 1] == $x && $patara[$i * 3 + 2] == $x) {
 						$won = true;
 						$whowon = $x;
 						//win x
 					}
 				}
-				if ($i == 0) {
+				if ($i == 0) { // diagonali 
 					if ($patara[0] == $o) {
 						if ($patara[4] == $o && $patara[8] == $o) {
 							$won = true;
@@ -58,7 +58,7 @@ function checkBoard($patara) {
 				}
 			}
 			if ($i == 0) {
-				if ($patara[$j] == $o) {
+				if ($patara[$j] == $o) { // vertikalurad shemocmeba 
 					if ($patara[$j + 3] == $o && $patara[$j + 6] == $o) {
 						$won = true;
 						$whowon = $o;
@@ -69,7 +69,7 @@ function checkBoard($patara) {
 						$whowon = $x;
 					}
 				}
-				if ($j == 2) {
+				if ($j == 2) { // diagonali 
 					if ($patara[2] == $o) {
 						if ($patara[4] == $o && $patara[6] == $o) {
 							$won = true;
@@ -96,7 +96,7 @@ if (mysql_num_rows($querry) > 0) {
 	$newMiniBoard = "";
 	for ($i = 0; $i < 9; $i++) {
 		if ($mini_board[$i] == 0) {
-			if($i>=0 && $i<3){
+			if($i<3){
 				$l = 0;
 			}
 			if($i>2 && $i<6){

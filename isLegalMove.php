@@ -21,14 +21,54 @@ if (isset($_SESSION["game_id"])) {
 		$player1_id = $row["player1_id"];
 		$player2_id = $row["player2_id"];
 		$mini_board = $row['mini_board'];
+		$last_turn = $row['last_turn'];
+		$lastX = $last_turn[1];
+		$lastY = $last_turn[2];
+		$lastIndex = $lastY*9 +$lastX;
 		$x = $_POST['x'];
 		$y = $_POST['y'];
 		$board = $row['board'];
 		$index = $y * 9 + $x;
 		$playerid = NULL;
+		$dzveli_nashti = $lastIndex%3;
+		$dzveli_ganakopi = (int)($lastIndex/9);
 		$nashti = $index%9;
 		$ganakopi = (int)($index/9);
+		$dzveli_dapa ;
 		$dapa;
+		if($dzveli_nashti==0){
+			if($dzveli_ganakopi==0){
+				$dzveli_dapa =0;
+			}
+			if($dzveli_ganakopi==1){
+				$dzveli_dapa =3;
+			}
+			if($dzveli_ganakopi==2){
+				$dzveli_dapa =6;
+			}
+		}
+		if($dzveli_nashti==1){
+			if($dzveli_ganakopi==0){
+				$dzveli_dapa =1;
+			}
+			if($dzveli_ganakopi==1){
+				$dzveli_dapa =4;
+			}
+			if($dzveli_ganakopi==2){
+				$dzveli_dapa =7;
+			}
+		}
+		if($dzveli_nashti==2){
+			if($dzveli_ganakopi==0){
+				$dzveli_dapa =2;	
+			}
+			if($dzveli_ganakopi==1){
+				$dzveli_dapa =5;
+			}
+			if($dzveli_ganakopi==2){
+				$dzveli_dapa =8;
+			}
+		}
 		if($ganakopi<3){ // daxurul magidas rom ar gadaaceros 
 			if($nashti<3){
 				$dapa =0;
@@ -59,13 +99,16 @@ if (isset($_SESSION["game_id"])) {
 				$dapa =1+6;
 			}
 			if($nashti>5 && $nashti<9){
-				$dapa =2+6;	
+				$dapa =2+6;
 			}
 		}
 		if ($board[$index] != 0) { // natamashebs roma r gadaaceros 
 			echo 0;
 		}
 		else if($mini_board[$dapa]!=0 ){
+			echo 0;
+		}
+		else if($dapa != $dzveli_dapa && $mini_board[$dzveli_dapa]==0){
 			echo 0;
 		}
 		else {
